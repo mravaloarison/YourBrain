@@ -10,68 +10,34 @@ import SwiftUI
 import WidgetKit
 
 struct YourBrainWidgetsControl: ControlWidget {
-    static let kind: String = "mravaloarison.YourBrain.YourBrainWidgets"
+    static let kind: String = "mravaloarison9623.YourBrain.YourBrainWidgets"
 
     var body: some ControlWidgetConfiguration {
-        AppIntentControlConfiguration(
-            kind: Self.kind,
-            provider: Provider()
-        ) { value in
+        StaticControlConfiguration(
+            kind: Self.kind
+        ) {
             ControlWidgetToggle(
-                "Start Timer",
-                isOn: value.isRunning,
-                action: StartTimerIntent(value.name)
-            ) { isRunning in
-                Label(isRunning ? "On" : "Off", systemImage: "timer")
-            }
-        }
-        .displayName("Timer")
-        .description("A an example control that runs a timer.")
-    }
-}
-
-extension YourBrainWidgetsControl {
-    struct Value {
-        var isRunning: Bool
-        var name: String
-    }
-
-    struct Provider: AppIntentControlValueProvider {
-        func previewValue(configuration: TimerConfiguration) -> Value {
-            YourBrainWidgetsControl.Value(isRunning: false, name: configuration.timerName)
-        }
-
-        func currentValue(configuration: TimerConfiguration) async throws -> Value {
-            let isRunning = true // Check if the timer is running
-            return YourBrainWidgetsControl.Value(isRunning: isRunning, name: configuration.timerName)
+                "YourBrain",
+                isOn: ControlManager.shared.isRunning,
+                action: ToggleTimerIntent(),
+                valueLabel: { isOn in
+                    Label(isOn ? "On" : "Off",
+                          systemImage: "brain.filled.head.profile")
+                }
+            )
+            .tint(.pink)
         }
     }
 }
 
-struct TimerConfiguration: ControlConfigurationIntent {
-    static let title: LocalizedStringResource = "Timer Name Configuration"
-
-    @Parameter(title: "Timer Name", default: "Timer")
-    var timerName: String
-}
-
-struct StartTimerIntent: SetValueIntent {
-    static let title: LocalizedStringResource = "Start a timer"
-
-    @Parameter(title: "Timer Name")
-    var name: String
-
-    @Parameter(title: "Timer is running")
+struct ToggleTimerIntent: SetValueIntent, LiveActivityIntent {
+    static let title: LocalizedStringResource = "YourBrain"
+    
+    @Parameter(title: "Functional")
     var value: Bool
-
-    init() {}
-
-    init(_ name: String) {
-        self.name = name
-    }
-
-    func perform() async throws -> some IntentResult {
-        // Start the timer…
+    
+    func perform() throws -> some IntentResult {
+        ControlManager.shared.setIsRunningValue(value)
         return .result()
     }
 }
