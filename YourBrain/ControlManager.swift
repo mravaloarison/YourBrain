@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+class ControlManager {
+    static let shared = ControlManager()
+    var isRunning = false
+    
+    func setIsRunningValue(_ value: Bool) {
+        isRunning = value
+    }
+}

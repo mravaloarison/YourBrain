@@ -9,10 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var goal: String = ""
+    @State private var isRunning: Bool = ControlManager.shared.isRunning
 
     var body: some View {
         VStack (spacing: 21) {
             Text("Test!")
+                .font(.title)
+                .padding()
+            Text("IsRunning: \(isRunning)")
         }
         .padding()
     }

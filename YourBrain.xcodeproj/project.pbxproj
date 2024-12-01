@@ -67,22 +67,22 @@
 			);
 			target = 38970D1A2CFBDF6B0072BABA /* YourBrainWidgetsExtension */;
 		};
+		38970D3F2CFC4D640072BABA /* Exceptions for "YourBrain" folder in "YourBrainWidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ControlManager.swift,
+			);
+			target = 38970D1A2CFBDF6B0072BABA /* YourBrainWidgetsExtension */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		38970CEC2CFBDF400072BABA /* YourBrain */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				38970D3F2CFC4D640072BABA /* Exceptions for "YourBrain" folder in "YourBrainWidgetsExtension" target */,
+			);
 			path = YourBrain;
-			sourceTree = "<group>";
-		};
-		38970CFD2CFBDF430072BABA /* YourBrainTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = YourBrainTests;
-			sourceTree = "<group>";
-		};
-		38970D072CFBDF430072BABA /* YourBrainUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = YourBrainUITests;
 			sourceTree = "<group>";
 		};
 		38970D212CFBDF6C0072BABA /* YourBrainWidgets */ = {
@@ -133,8 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				38970CEC2CFBDF400072BABA /* YourBrain */,
-				38970CFD2CFBDF430072BABA /* YourBrainTests */,
-				38970D072CFBDF430072BABA /* YourBrainUITests */,
 				38970D212CFBDF6C0072BABA /* YourBrainWidgets */,
 				38970D1C2CFBDF6C0072BABA /* Frameworks */,
 				38970CEB2CFBDF400072BABA /* Products */,
@@ -201,9 +199,6 @@
 			dependencies = (
 				38970CFC2CFBDF430072BABA /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				38970CFD2CFBDF430072BABA /* YourBrainTests */,
-			);
 			name = YourBrainTests;
 			packageProductDependencies = (
 			);
@@ -223,9 +218,6 @@
 			);
 			dependencies = (
 				38970D062CFBDF430072BABA /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				38970D072CFBDF430072BABA /* YourBrainUITests */,
 			);
 			name = YourBrainUITests;
 			packageProductDependencies = (
