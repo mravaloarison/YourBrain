@@ -8,17 +8,28 @@
 import SwiftUI
 
 struct SettingsViews: View {
-    @State private var goal: String = ""
-    @State private var isRunning: Bool = false
+    @ObservedObject private var controlManager = ControlManager.shared
     
     var body: some View {
         List {
             Section("Available Option") {
-                Toggle("Activate", isOn: $isRunning)
+                Toggle("Activate", isOn: $controlManager.isRunningValue)
                     .tint(.pink)
-                    .onChange(of: isRunning) { oldValue, newValue in
-                        ControlManager.shared.setIsRunningValue(newValue)
+            }
+            
+            Section("humm") {
+                HStack {
+                    Text("Your goal")
+                    Spacer()
+                    TextField("Getting a brain", text: $controlManager.goal)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.trailing)
+                }
+                Picker("Gender", selection: $controlManager.selectedEthnicity) {
+                    ForEach(controlManager.ethnicity, id: \.self) {
+                        Text($0)
                     }
+                }
             }
             
             Section("daily achievement") {

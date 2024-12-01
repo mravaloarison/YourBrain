@@ -12,18 +12,20 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $defaultView) {
+            Text("Generated story for user")
+                .tabItem {
+                    Label("Daily story", systemImage: "wand.and.stars")
+                }
             Text("This View represent the emptiness in your Brain")
                 .tabItem {
-                    Image(systemName: "shippingbox.fill")
-                    Text("Nothing")
+                    Label("Nothing", systemImage: "shippingbox.fill")
                 }
                 .tag(1)
             NavigationStack {
                 SettingsViews()
             }
             .tabItem {
-                Image(systemName: "gear")
-                Text("Settings")
+                Label("Settings", systemImage: "gear")
             }
             .tag(2)
         }

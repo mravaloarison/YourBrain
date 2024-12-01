@@ -18,7 +18,7 @@ struct YourBrainWidgetsControl: ControlWidget {
         ) {
             ControlWidgetToggle(
                 "YourBrain",
-                isOn: ControlManager.shared.isRunning,
+                isOn: ControlManager.shared.isRunningValue,
                 action: ToggleTimerIntent(),
                 valueLabel: { isOn in
                     Label(isOn ? "On" : "Off",
