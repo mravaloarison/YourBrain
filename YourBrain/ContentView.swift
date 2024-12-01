@@ -8,17 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var goal: String = ""
-    @State private var isRunning: Bool = ControlManager.shared.isRunning
-
+    @State private var defaultView = 2
+    
     var body: some View {
-        VStack (spacing: 21) {
-            Text("Test!")
-                .font(.title)
-                .padding()
-            Text("IsRunning: \(isRunning)")
+        TabView(selection: $defaultView) {
+            Text("This View represent the emptiness in your Brain")
+                .tabItem {
+                    Image(systemName: "shippingbox.fill")
+                    Text("Nothing")
+                }
+                .tag(1)
+            NavigationStack {
+                SettingsViews()
+            }
+            .tabItem {
+                Image(systemName: "gear")
+                Text("Settings")
+            }
+            .tag(2)
         }
-        .padding()
     }
 }
 

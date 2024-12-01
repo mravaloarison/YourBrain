@@ -13,5 +13,6 @@ class ControlManager {
     
     func setIsRunningValue(_ value: Bool) {
         isRunning = value
+        print("Changes to isRunning: \(value)")
     }
 }
