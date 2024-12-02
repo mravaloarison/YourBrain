@@ -16,7 +16,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Daily story", systemImage: "wand.and.stars")
                 }
-            Text("This View represent the emptiness in your Brain")
+            NothingView()
                 .tabItem {
                     Label("Nothing", systemImage: "shippingbox.fill")
                 }
