@@ -6,13 +6,25 @@
 //
 
 import SwiftUI
+import WebKit
 
-struct GifImageView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct GifImageView: UIViewRepresentable {
+    let url: URL
+
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = WKWebView()
+        webView.scrollView.isScrollEnabled = false
+        webView.backgroundColor = .clear
+        webView.isOpaque = false
+        return webView
+    }
+
+    func updateUIView(_ webView: WKWebView, context: Context) {
+        let request = URLRequest(url: url)
+        webView.load(request)
     }
 }
 
 #Preview {
-    GifImageView()
+    GifImageView(url: URL(string:"https://giphy.com/embed/EkHbiqD1yu6Wc")!)
 }
