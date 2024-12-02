@@ -19,9 +19,9 @@ struct SettingsViews: View {
             
             Section("humm") {
                 HStack {
-                    Text("Your goal")
+                    Text("Dream Job")
                     Spacer()
-                    TextField("Getting a brain", text: $controlManager.goal)
+                    TextField("Squirrel Psychiatrist", text: $controlManager.goal)
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.trailing)
                 }
